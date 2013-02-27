@@ -1,0 +1,9 @@
+for (( n=1; n <=100 ; n++ ))
+do
+	sed -i 's/#define\ NTHREADS\ .*/#define\ NTHREADS\ '$n'/g' string_search.c
+	make clean
+	sleep 0.05
+	make
+	sleep 0.05
+	./string_search "This is" < sample.html >> Result.txt
+done

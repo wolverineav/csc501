@@ -1,0 +1,33 @@
+1. Analyze and explain the results of Test 1.
+
+As per the results observed, the process A with a priority of 10 is scheduled most of the time (63% approx). According to the calculations in the exponential distribution scheduler, this seems correct, as we are setting the value of Lambda to 0.1, the mean of the distribution comes to 1/lambda i.e. 10. Hence the process A was scheduled 63% of the time.
+
+The density of values chosen near 10 is more than it is at 99. As we go further away from 10, the probability of that number being chosen for scheduling is less.
+
+2. What are the advantages and disadvantages of each of the two scheduling policies? Also, give the advantages and disadvantages of the round robin scheduling policy originally implemented in Xinu.
+
+Advantages:
+exp dist sched
+- This is better than the default priority based scheduler in XINU. 
+- In the sense that it rotates the priority on a random basis, although we define the approximate priority at which the scheduling will be more consistent - in our case it is 10. 
+- The 'lambda' decides this selection.
+
+linux sched 
+- This gives an opportunity to every process based on its priority. 
+- Since we do not account for real time processes, the priority of >1000 does not come into picture. Hence each process is almost guaranteed to run on the system.
+- Based on priority, the process will get more time to run on the system and after rescheduling, it will have better chances of being scheduled again for execution. This is because if it has higher priority, its goodness remains high for a longer time.
+
+default round robin
+- The highest priority processes get equal execution time.
+- Rescheduling is fast
+
+Disadvantages:
+exp dist sched
+- Due to the random factor, the highest priority process does not always get scheduled. This is bad if interactive process has to wait for other lower priority task.
+
+linux sched
+- scheduling involves many calculations. hence it takes time.
+- if number of processes is high, the 'resched' itself will take more time than execution of processes
+
+default round robin
+- low priority processes are starved. they never get executed if there is always another higher priority process

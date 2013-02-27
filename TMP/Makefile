@@ -398,6 +398,8 @@ kprintf.o: ./../sys/kprintf.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
   ../h/mem.h ../h/tty.h
 kputc.o: ./../sys/kputc.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
   ../h/mem.h ../h/tty.h
+linux_sched.o: ./../sys/linux_sched.c ../h/conf.h ../h/kernel.h \
+  ../h/systypes.h ../h/mem.h ../h/proc.h ../h/q.h ../h/sched.h
 main.o: ./../sys/main.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
   ../h/mem.h ../h/q.h ../h/sched.h ../h/stdio.h ../h/math.h
 mark.o: ./../sys/mark.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
@@ -470,6 +472,10 @@ stacktrace.o: ./../sys/stacktrace.c ../h/conf.h ../h/kernel.h \
   ../h/systypes.h ../h/mem.h ../h/proc.h ../h/stdio.h
 suspend.o: ./../sys/suspend.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
   ../h/mem.h ../h/proc.h ../h/q.h ../h/stdio.h
+test1.o: ./../sys/test1.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
+  ../h/mem.h ../h/q.h
+testmain.o: ./../sys/testmain.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
+  ../h/mem.h ../h/q.h ../h/sched.h ../h/stdio.h ../h/math.h
 unsleep.o: ./../sys/unsleep.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
   ../h/mem.h ../h/proc.h ../h/q.h ../h/sleep.h ../h/stdio.h
 userret.o: ./../sys/userret.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
@@ -482,27 +488,10 @@ write.o: ./../sys/write.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
   ../h/mem.h ../h/io.h
 xdone.o: ./../sys/xdone.c ../h/kernel.h ../h/systypes.h ../h/conf.h \
   ../h/mem.h ../h/stdio.h
-chprio.o: ./../TMP/chprio.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
-  ../h/mem.h ../h/proc.h ../h/q.h ../h/stdio.h ../h/sched.h
-create.o: ./../TMP/create.c ../h/conf.h ../h/i386.h ../h/kernel.h \
-  ../h/systypes.h ../h/mem.h ../h/proc.h ../h/sem.h ../h/io.h \
-  ../h/stdio.h
-getitem.o: ./../TMP/getitem.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
-  ../h/mem.h ../h/q.h ../h/sched.h
-getschedclass.o: ./../TMP/getschedclass.c ../h/kernel.h ../h/systypes.h \
-  ../h/conf.h ../h/mem.h ../h/sched.h
-initialize.o: ./../TMP/initialize.c ../h/conf.h ../h/i386.h ../h/kernel.h \
-  ../h/systypes.h ../h/mem.h ../h/mark.h ../h/bufpool.h ../h/proc.h \
-  ../h/sem.h ../h/sleep.h ../h/tty.h ../h/q.h ../h/io.h ../h/stdio.h
-math.o: ./../TMP/math.c ../h/math.h
-ready.o: ./../TMP/ready.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
-  ../h/mem.h ../h/proc.h ../h/q.h ../h/sched.h
-resched.o: ./../TMP/resched.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
-  ../h/mem.h ../h/proc.h ../h/q.h ../h/math.h ../h/sched.h
-sched.o: ./../TMP/sched.c ../h/kernel.h ../h/systypes.h ../h/conf.h \
-  ../h/mem.h ../h/q.h ../h/proc.h ../h/sched.h
-setschedclass.o: ./../TMP/setschedclass.c ../h/kernel.h ../h/systypes.h \
-  ../h/conf.h ../h/mem.h ../h/sched.h
+test1.o: ./../TMP/test1.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
+  ../h/mem.h ../h/q.h
+testmain.o: ./../TMP/testmain.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
+  ../h/mem.h ../h/q.h ../h/sched.h ../h/stdio.h ../h/math.h
 ttyalloc.o: ./../tty/ttyalloc.c ../h/conf.h ../h/kernel.h ../h/systypes.h \
   ../h/mem.h ../h/tty.h ../h/stdio.h
 ttycntl.o: ./../tty/ttycntl.c ../h/conf.h ../h/kernel.h ../h/systypes.h \

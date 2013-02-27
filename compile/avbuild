@@ -1,0 +1,6 @@
+make clean
+echo "********** make clean done *********"
+make depend
+echo "********** make depend done ********"
+make
+echo "********** make done ***************"

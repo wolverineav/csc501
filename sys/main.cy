@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <math.h>
 
+#include <proc.h>
+
 #define LOOP	50
 
 int prA, prB, prC;
@@ -17,75 +19,56 @@ volatile int c_cnt = 0;
 volatile int s = 0;
 
 int main() {
-	int i;
+	int i,j,proc;
 	int count = 0;
-	char buf[8];
 
 	srand(1234);
 
-	kprintf("Please Input:\n");
-	while ((i = read(CONSOLE, buf, sizeof(buf))) < 1)
-		;
-	buf[i] = 0;
-	s = atoi(buf);
-	kprintf("Get %d\n", s);
+kprintf("queue:\n");
+proc = q[rdyhead].qnext;
+do{
+kprintf("%s->", proctab[proc].pname);
+proc = q[proc].qnext;
+}while(proc < NPROC);
+kprintf("\n");
 
-	// EXPDISTSCHED
-	if (s < 2) {
-		setschedclass(EXPDISTSCHED);
-		switch (s) {
-		case 1:
 			prA = create(proc_a, 2000, 10, "proc A", 1, 'A');
 			prB = create(proc_b, 2000, 20, "proc B", 1, 'B');
 			prC = create(proc_c, 2000, 30, "proc C", 1, 'C');
 			resume(prA);
-			resume(prB);
-			resume(prC);
-			break;
-		}
 
+kprintf("queue:\n");
+proc = q[rdyhead].qnext;
+do{
+kprintf("%s->", proctab[proc].pname);
+proc = q[proc].qnext;
+}while(proc < NPROC);
+kprintf("\n");
+
+			resume(prB);
+kprintf("queue:\n");
+proc = q[rdyhead].qnext;
+do{
+kprintf("%s->", proctab[proc].pname);
+proc = q[proc].qnext;
+}while(proc < NPROC);
+kprintf("\n");
+			resume(prC);		
+kprintf("queue:\n");
+proc = q[rdyhead].qnext;
+do{
+kprintf("%s->", proctab[proc].pname);
+proc = q[proc].qnext;
+}while(proc < NPROC);
+kprintf("\n");
 		sleep(10);
 		kill(prA);
 		kill(prB);
 		kill(prC);
 
-		switch (s) {
-		case 1:
 kprintf("\nTest2 RESULT: A = %d, B = %d, C = %d\n", a_cnt, b_cnt, c_cnt);
-			break;
-		}
-	}
-	// LINUXSCHED
-	else {
-		setschedclass(LINUXSCHED);
-		switch (s) {
-		case 2:
-	resume(prA = create(proc, 2000, 5, "proc A", 1, \
-'A'));
-			resume(prB = create(proc, 2000, 50, "proc B", 1, \
-'B'));
-			resume(prC = create(proc, 2000, 90, "proc C", 1,\
-'C'));
-			break;
-		}
 
-		while (count++ < LOOP) {
-			kprintf("M");
-
-			if (s == 7 && count == 5) {
-				kprintf("CHPRIO\n");
-				chprio(prA, 90);
-				chprio(prB, 60);
-				chprio(prC, 30);
-			}
-			if (s == 2 || s == 5 || s == 7) {
-				for (i = 0; i < 10000000; i++)
-					;
-			} else if (s == 6)
-				sleep(1);
-		}
-
-	}
+return 0;
 
 }
 
@@ -153,10 +136,10 @@ proc(char c) {
 
 	while (count++ < LOOP) {
 		kprintf("%c", c);
-		if (s == 2 || s == 5 || s == 7) {
+		if (s == 4 || s == 5 || s == 7) {
 			for (i = 0; i < 10000000; i++)
 				;
-		} else if (s == 2) {
+		} else if (s == 6) {
 			sleep(1);
 		}
 	}

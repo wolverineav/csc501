@@ -1,0 +1,624 @@
+
+xinu.elf:     file format elf32-i386
+xinu.elf
+architecture: i386, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x0000001d
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0x00000000 paddr 0x00000000 align 2**12
+         filesz 0x0000cb01 memsz 0x0000cb01 flags r-x
+    LOAD off    0x0000db20 vaddr 0x0000db20 paddr 0x0000db20 align 2**12
+         filesz 0x00000540 memsz 0x00006198 flags rw-
+   STACK off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**2
+         filesz 0x00000000 memsz 0x00000000 flags rwx
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000b8b6  00000000  00000000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .rodata       00001249  0000b8b8  0000b8b8  0000c8b8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .data         00000540  0000db20  0000db20  0000db20  2**5
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .bss          00005c58  0000e060  0000e060  0000e060  2**5
+                  ALLOC
+  4 .comment      0000140a  00000000  00000000  0000e060  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 
+0000b8b8 l    d  .rodata	00000000 
+0000db20 l    d  .data	00000000 
+0000e060 l    d  .bss	00000000 
+00000000 l    d  .comment	00000000 
+00000000 l    d  *ABS*	00000000 
+00000000 l    d  *ABS*	00000000 
+00000000 l    d  *ABS*	00000000 
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+00000063 l       .text	00000000 gdt1
+0000dcf8 l       .data	00000000 savearea
+000000f9 l       .text	00000000 L1
+00000000 l    df *ABS*	00000000 initialize.c
+0000026e l     F .text	00000230 sysinit
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+00000020 l       *ABS*	00000000 ICU1
+000000a0 l       *ABS*	00000000 ICU2
+00000020 l       *ABS*	00000000 OCW1_2
+000000a0 l       *ABS*	00000000 OCW2_2
+00000021 l       *ABS*	00000000 IMR1
+000000a1 l       *ABS*	00000000 IMR2
+00000020 l       *ABS*	00000000 EOI
+00000514 l       .text	00000000 Xtrap
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+00000020 l       *ABS*	00000000 ICU1
+000000a0 l       *ABS*	00000000 ICU2
+00000020 l       *ABS*	00000000 OCW1_2
+000000a0 l       *ABS*	00000000 OCW2_2
+00000021 l       *ABS*	00000000 IMR1
+000000a1 l       *ABS*	00000000 IMR2
+00000020 l       *ABS*	00000000 EOI
+00000894 l       .text	00000000 count1000
+000008bb l       .text	00000000 cl1
+000008d2 l       .text	00000000 clpreem
+000008df l       .text	00000000 clret
+000008e4 l       .text	00000000 newmask
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+00000000 l    df *ABS*	00000000 comcntl.c
+00000000 l    df *ABS*	00000000 comgetc.c
+00000000 l    df *ABS*	00000000 comiin.c
+00000000 l    df *ABS*	00000000 cominit.c
+00000000 l    df *ABS*	00000000 cominput.c
+00000000 l    df *ABS*	00000000 comoutput.c
+00000000 l    df *ABS*	00000000 comread.c
+00000000 l    df *ABS*	00000000 comintr.c
+00000000 l    df *ABS*	00000000 monitor.c
+00000000 l    df *ABS*	00000000 monarp.c
+00000000 l    df *ABS*	00000000 monbootp.c
+000020ff l     F .text	00000088 make_bootp_packet
+00000000 l    df *ABS*	00000000 monip.c
+00000000 l    df *ABS*	00000000 monnet.c
+00000000 l    df *ABS*	00000000 monudp.c
+00000000 l    df *ABS*	00000000 mongpq.c
+0000e080 l     O .bss	00000380 mon_Q
+00000000 l    df *ABS*	00000000 ethintr.c
+00002e82 l     F .text	0000015a eep_xintr
+00000000 l    df *ABS*	00000000 ethwrite.c
+00000000 l    df *ABS*	00000000 ethinit.c
+0000322a l     F .text	00000266 eep_probe
+00003819 l     F .text	00000437 i82595_init
+00003490 l     F .text	000000d0 search_eepro
+00003614 l     F .text	00000205 check_mem_size
+00003560 l     F .text	000000b4 check_board
+0000ddb0 l     O .data	00000010 irqrmap
+00003c50 l     F .text	000001cb config_593
+00000000 l    df *ABS*	00000000 ethdemux.c
+00003f7d l     F .text	000000d7 rcv_frame
+00000000 l    df *ABS*	00000000 ethwstrt.c
+00000000 l    df *ABS*	00000000 ethrom.c
+00000000 l    df *ABS*	00000000 monboot.c
+00000000 l    df *ABS*	00000000 montimer.c
+00000000 l    df *ABS*	00000000 ethcmd.c
+00000000 l    df *ABS*	00000000 monpci.c
+0000e410 l     O .bss	00000004 mon_bios32_entry
+0000ddc4 l     O .data	00000008 mon_bios32_indirect
+0000e414 l     O .bss	00000004 mon_pcibios_entry
+0000ddcc l     O .data	00000008 mon_pci_indirect
+0000e418 l     O .bss	00000004 mon_bios32ptr
+00004c76 l     F .text	000000a4 mon_bios32_service
+00000000 l    df *ABS*	00000000 mon3com.c
+00000000 l    df *ABS*	00000000 blkcmp.c
+00000000 l    df *ABS*	00000000 blkequ.c
+00000000 l    df *ABS*	00000000 main.c
+00000000 l    df *ABS*	00000000 stacktrace.c
+0000e41c l     O .bss	00000004 esp
+0000e420 l     O .bss	00000004 ebp
+00000000 l    df *ABS*	00000000 chprio.c
+00000000 l    df *ABS*	00000000 clkinit.c
+00000000 l    df *ABS*	00000000 close.c
+00000000 l    df *ABS*	00000000 conf.c
+00000000 l    df *ABS*	00000000 control.c
+00000000 l    df *ABS*	00000000 create.c
+000061e1 l     F .text	00000069 newpid
+00000000 l    df *ABS*	00000000 evec.c
+0000e428 l     O .bss	00000004 fp
+00000000 l    df *ABS*	00000000 freebuf.c
+00000000 l    df *ABS*	00000000 freemem.c
+00000000 l    df *ABS*	00000000 getbuf.c
+00000000 l    df *ABS*	00000000 getc.c
+00000000 l    df *ABS*	00000000 getitem.c
+00000000 l    df *ABS*	00000000 getmem.c
+00000000 l    df *ABS*	00000000 getpid.c
+00000000 l    df *ABS*	00000000 getprio.c
+00000000 l    df *ABS*	00000000 getstk.c
+00000000 l    df *ABS*	00000000 gettime.c
+00000000 l    df *ABS*	00000000 gpq.c
+0000e440 l     O .bss	00000004 qinit
+0000e460 l     O .bss	00000c80 Q
+000074df l     F .text	00000038 initq
+00000000 l    df *ABS*	00000000 i386.c
+00000000 l    df *ABS*	00000000 init.c
+00000000 l    df *ABS*	00000000 insert.c
+00000000 l    df *ABS*	00000000 insertd.c
+00000000 l    df *ABS*	00000000 ioerr.c
+00000000 l    df *ABS*	00000000 ionull.c
+00000000 l    df *ABS*	00000000 kill.c
+00000000 l    df *ABS*	00000000 kprintf.c
+00000000 l    df *ABS*	00000000 kputc.c
+00000000 l    df *ABS*	00000000 mark.c
+00000000 l    df *ABS*	00000000 mkpool.c
+00000000 l    df *ABS*	00000000 newqueue.c
+00000000 l    df *ABS*	00000000 open.c
+00000000 l    df *ABS*	00000000 panic.c
+00000000 l    df *ABS*	00000000 poolinit.c
+00000000 l    df *ABS*	00000000 putc.c
+00000000 l    df *ABS*	00000000 queue.c
+00000000 l    df *ABS*	00000000 read.c
+00000000 l    df *ABS*	00000000 ready.c
+00000000 l    df *ABS*	00000000 receive.c
+00000000 l    df *ABS*	00000000 recvclr.c
+00000000 l    df *ABS*	00000000 recvtim.c
+00000000 l    df *ABS*	00000000 resched.c
+00000000 l    df *ABS*	00000000 resume.c
+00000000 l    df *ABS*	00000000 scount.c
+00000000 l    df *ABS*	00000000 screate.c
+00008752 l     F .text	0000006b newsem
+00000000 l    df *ABS*	00000000 sdelete.c
+00000000 l    df *ABS*	00000000 send.c
+00000000 l    df *ABS*	00000000 setdev.c
+00000000 l    df *ABS*	00000000 setnok.c
+00000000 l    df *ABS*	00000000 signal.c
+00000000 l    df *ABS*	00000000 signaln.c
+00000000 l    df *ABS*	00000000 sleep.c
+00000000 l    df *ABS*	00000000 sleep10.c
+00000000 l    df *ABS*	00000000 sleep100.c
+00000000 l    df *ABS*	00000000 sleep1000.c
+00000000 l    df *ABS*	00000000 sreset.c
+00000000 l    df *ABS*	00000000 suspend.c
+00000000 l    df *ABS*	00000000 unsleep.c
+00000000 l    df *ABS*	00000000 userret.c
+00000000 l    df *ABS*	00000000 wait.c
+00000000 l    df *ABS*	00000000 wakeup.c
+00000000 l    df *ABS*	00000000 write.c
+00000000 l    df *ABS*	00000000 xdone.c
+00000000 l    df *ABS*	00000000 pci.c
+0000f0e0 l     O .bss	00000004 bios32_entry
+0000e040 l     O .data	00000008 bios32_indirect
+0000f0e4 l     O .bss	00000004 pcibios_entry
+0000e048 l     O .data	00000008 pci_indirect
+0000f0e8 l     O .bss	00000004 bios32ptr
+00009656 l     F .text	000000a4 bios32_service
+00000000 l    df *ABS*	00000000 printsegaddress.c
+00000000 l    df *ABS*	00000000 printtos.c
+0000f0ec l     O .bss	00000004 esp
+0000f0f0 l     O .bss	00000004 ebp
+00000000 l    df *ABS*	00000000 printprocstks.c
+0000f0f4 l     O .bss	00000004 esp
+00000000 l    df *ABS*	00000000 ttyalloc.c
+00000000 l    df *ABS*	00000000 ttycntl.c
+00000000 l    df *ABS*	00000000 ttygetc.c
+00000000 l    df *ABS*	00000000 ttyiin.c
+0000f0f8 l     O .bss	00000001 lastc.0
+0000a0c9 l     F .text	000000c3 iputchar
+0000a258 l     F .text	0000018d delchar
+0000a3e5 l     F .text	0000011b delword
+0000a500 l     F .text	00000123 reprint
+0000a18c l     F .text	000000cc echo
+00000000 l    df *ABS*	00000000 ttyinit.c
+00000000 l    df *ABS*	00000000 ttynew.c
+00000000 l    df *ABS*	00000000 ttyopen.c
+00000000 l    df *ABS*	00000000 ttyputc.c
+00000000 l    df *ABS*	00000000 ttyread.c
+00000000 l    df *ABS*	00000000 ttywrite.c
+00000000 l    df *ABS*	00000000 ttyoin.c
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+0000aae0 l       .text	00000000 L4
+0000aac9 l       .text	00000000 L5
+0000aa90 l       .text	00000000 L7
+0000aad4 l       .text	00000000 L3
+0000aaf0 l       .text	00000000 L1
+0000aafe l       .text	00000000 L2
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+00000020 l       *ABS*	00000000 ICU1
+000000a0 l       *ABS*	00000000 ICU2
+00000020 l       *ABS*	00000000 OCW1_2
+000000a0 l       *ABS*	00000000 OCW2_2
+00000021 l       *ABS*	00000000 IMR1
+000000a1 l       *ABS*	00000000 IMR2
+00000020 l       *ABS*	00000000 EOI
+0000e05c l       .data	00000000 count100
+0000ab40 l       .text	00000000 clret
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+00000020 l       *ABS*	00000000 ICU1
+000000a0 l       *ABS*	00000000 ICU2
+00000020 l       *ABS*	00000000 OCW1_2
+000000a0 l       *ABS*	00000000 OCW2_2
+00000021 l       *ABS*	00000000 IMR1
+000000a1 l       *ABS*	00000000 IMR2
+00000020 l       *ABS*	00000000 EOI
+00000000 l    df *ABS*	00000000 <command line>
+00000000 l    df *ABS*	00000000 <built-in>
+00000020 l       *ABS*	00000000 ICU1
+000000a0 l       *ABS*	00000000 ICU2
+00000020 l       *ABS*	00000000 OCW1_2
+000000a0 l       *ABS*	00000000 OCW2_2
+00000021 l       *ABS*	00000000 IMR1
+000000a1 l       *ABS*	00000000 IMR2
+00000020 l       *ABS*	00000000 EOI
+00000000 l    df *ABS*	00000000 montftp.c
+0000b0dc l       .text	00000000 L100
+00000000 l    df *ABS*	00000000 doprnt.c
+0000b53e l     F .text	00000077 _prtl10
+0000b4cb l     F .text	00000073 _prt10
+0000b620 l     F .text	00000061 _prtl8
+0000b5b5 l     F .text	0000006b _prt8
+0000b6e1 l     F .text	00000060 _prtl16
+0000b681 l     F .text	00000060 _prt16
+0000b7a2 l     F .text	00000061 _prtl2
+0000b741 l     F .text	00000061 _prt2
+00000000 l    df *ABS*	00000000 sprintf.c
+0000b833 l     F .text	00000014 sprntf
+00000000 l    df *ABS*	00000000 strcmp.c
+00000000 l    df *ABS*	00000000 strcpy.c
+00000000 l    df *ABS*	00000000 strlen.c
+00012db8 g     O .bss	00000004 mon_Net
+0000851c g     F .text	000000f6 resched
+00000148 g     F .text	00000126 nulluser
+00000000 g       .text	00000000 entry
+0000b87c g     F .text	0000001b strcpy
+00000085 g       .text	00000000 inb
+0000dcf0 g       .data	00000000 _bootdev
+00007109 g     F .text	000000c1 headq
+000131e0 g     O .bss	00000190 bptab
+00000812 g       .text	00000000 pause
+00008af0 g     F .text	000000b4 signaln
+00006b84 g     F .text	0000010c getmem
+0000db60 g       .data	00000000 gdtr
+00000747 g       .text	00000000 _Xint47
+0000b0fc g     F .text	000003cf _doprnt
+00005ed4 g     F .text	00000051 control
+0000a71c g     F .text	000000c5 ttyopen
+000005c6 g       .text	00000000 _Xint12
+00007ce8 g     F .text	0000003d kputc
+00000d31 g     F .text	000000ff comdump
+00002c96 g     F .text	00000035 mon_initq
+00012ec0 g     O .bss	00000110 txring
+000022e5 g     F .text	00000088 mon_netinit
+0000012f g       .text	00000000 lidt
+000006a2 g       .text	00000000 _Xint32
+0000dd60 g     O .data	0000004c lstab
+00013ca0 g     O .bss	00000004 mon_tftp_bytes
+00000726 g       .text	00000000 _Xint44
+000005a5 g       .text	00000000 _Xint9
+00008de4 g     F .text	000000c0 sleep1000
+00001e90 g     F .text	0000003f mon_bootp_in
+000011d4 g     F .text	0000000a congetc
+000016e0 g     F .text	0000019c mon_cmd
+00005d1c g     F .text	00000086 chprio
+00013ca4 g     O .bss	00000004 mon_tftp_server
+00001f63 g     F .text	0000019c mon_bootp_request
+00002a64 g     F .text	0000010e mon_deq
+0000dde0 g     O .data	000001b0 devtab
+000005fd g       .text	00000000 _Xint17
+00001c91 g     F .text	00000045 mon_arpalloc
+000096fa g     F .text	00000074 find_pci_device
+00004edb g     F .text	00000039 mon_pci_bios_write_config_dword
+00000731 g       .text	00000000 _Xint45
+00004054 g     F .text	000002e5 mon_ethwstrt
+00004d1a g     F .text	0000007d mon_find_pci_device
+0000f100 g     O .bss	00000004 numproc
+00006c90 g     F .text	0000000a getpid
+00008c44 g     F .text	000000d4 sleep10
+000087c0 g     F .text	000000e5 sdelete
+000011e8 g     F .text	00000266 comintr
+000005d1 g       .text	00000000 _Xint13
+00013180 g     O .bss	00000050 marks
+00013130 g     O .bss	00000004 clockq
+00004e1a g     F .text	00000041 mon_pci_bios_read_config_dword
+00013134 g     O .bss	00000004 sltop
+00006ab8 g     F .text	0000004b getc
+000011de g     F .text	0000000a conread
+00000d14 g     F .text	0000001d comtest
+0000f104 g     O .bss	00000004 currpid
+0000a930 g     F .text	00000128 ttywrite
+00002188 g     F .text	00000133 mon_ip_in
+00013138 g     O .bss	00000004 count6
+000067cc g     F .text	00000156 getbuf
+00008d18 g     F .text	000000ca sleep100
+00007620 g     F .text	000000c1 init8259
+00000577 g       .text	00000000 _Xint4
+0000aa58 g     F .text	00000023 ttyoin
+00002ccb g     F .text	0000009b mon_headq
+0001315c g     O .bss	00000002 girmask
+00013380 g     O .bss	00000920 ttytab
+000086a4 g     F .text	00000040 scount
+000025c6 g     F .text	0000003e mon_blkequ
+00007898 g     F .text	0000004b init_dev
+0000e050 g     O .data	0000000b dfltchars
+00009144 g     F .text	00000024 userret
+0000db20 g       .data	00000000 gdt
+00006b43 g     F .text	0000003f getlast
+00008ba4 g     F .text	0000009d sleep
+00000883 g       .text	00000000 spurious_irq7
+0000f120 g     O .bss	00002008 proctab
+00000918 g     F .text	00000000 zfunction
+0000e060 g       *ABS*	00000000 edata
+00012fd0 g     O .bss	00000004 mon_eth_rxring
+00011140 g     O .bss	00000640 semaph
+000071ca g     F .text	00000124 seeq
+0000058f g       .text	00000000 _Xint7
+0000013e g       .text	00000000 jumptobootcode
+0000a808 g     F .text	00000128 ttyread
+0000dfa0 g     O .data	00000044 inames
+0000236d g     F .text	00000075 mon_ni_in
+0000a7e4 g     F .text	00000022 ttyputc
+00007ae8 g     F .text	0000000a ioerr
+00005da4 g     F .text	000000aa clkinit
+000005dc g       .text	00000000 _Xint14
+00008f60 g     F .text	000000b7 suspend
+0000e40c g     O .bss	00000004 mon_first_req
+00000e30 g     F .text	0000001d cominput
+00000608 g       .text	00000000 _Xint18
+0000537b g     F .text	00000245 mon_3c905_ethintr
+00000137 g       .text	00000000 jumptocode
+00009507 g     F .text	0000014f check_pcibios
+00009a13 g     F .text	00000041 pci_bios_write_config_word
+000028cc g     F .text	00000198 mon_enq
+000006ef g       .text	00000000 _Xint39
+000055c0 g     F .text	000001cc mon_3c905_ethdemux
+00006d18 g     F .text	00000103 getstk
+000000df g       .text	00000000 bzero
+000088a8 g     F .text	000000d1 send
+000022bc g     F .text	00000029 mon_init
+00005e4e g     F .text	00000039 clktest
+0000081f g       .text	00000000 enable
+00000697 g       .text	00000000 _Xint31
+00000629 g       .text	00000000 _Xint21
+0000066b g       .text	00000000 _Xint27
+00004dd8 g     F .text	00000042 mon_pci_bios_read_config_word
+00012e50 g     O .bss	00000004 mon_bufpool
+00006680 g     F .text	00000149 freemem
+00004f14 g     F .text	00000080 ethcmdwait
+00009258 g     F .text	000000c6 wakeup
+0000b0b8 g       .text	00000000 blkcopy
+00001917 g     F .text	0000037a mon_arp_in
+000049b4 g     F .text	00000065 mon_pci_init
+0000ab66 g       .text	00000000 mon_ethint_hi
+0000008d g       .text	00000000 inw
+00009d98 g     F .text	0000013d ttycntl
+00012fd4 g     O .bss	00000004 mon_eth_txring
+000000d3 g       .text	00000000 ___divsi3
+00012e80 g     O .bss	00000028 mon_eth
+00011780 g     O .bss	00000004 nextsem
+0000624c g     F .text	0000004c initevec
+00000974 g     F .text	00000065 comiin
+00009a90 g     F .text	00000082 printsegaddress
+00000888 g       .text	00000000 spurious_irq15
+0001313c g     O .bss	00000004 defclk
+00007de4 g     F .text	00000191 mkpool
+00012fe0 g     O .bss	00000024 mon_dev_eth
+00009320 g     F .text	00000051 write
+000023e2 g     F .text	000001e4 mon_netwrite
+00007b00 g     F .text	000001a2 kill
+0000e064 g     O .bss	00000004 mon_ip_anyaddr
+00011784 g     O .bss	00000004 nextqueue
+0000578c g     F .text	000000d0 mon_3c905_ethxintr
+00009910 g     F .text	00000041 pci_bios_read_config_byte
+0000e060 g     O .bss	00000004 reboot
+00013cb8 g       *ABS*	00000000 end
+000006ce g       .text	00000000 _Xint36
+00000830 g       .text	00000000 disable
+000131d0 g     O .bss	00000004 nmarks
+00002d68 g     F .text	0000011a mon_ethintr
+00008414 g     F .text	00000106 recvtim
+0000092c g     F .text	0000000a comcntl
+00000705 g       .text	00000000 _Xint41
+00004e9a g     F .text	00000041 mon_pci_bios_write_config_word
+00013ca8 g     O .bss	00000004 mon_tftp_block
+00000505 g     F .text	0000000d sizmem
+000099d4 g     F .text	0000003f pci_bios_write_config_byte
+000006e4 g       .text	00000000 _Xint38
+0000ab58 g       .text	00000000 mon_ethint
+0000b8b6 g       *ABS*	00000000 etext
+00004e5b g     F .text	0000003f mon_pci_bios_write_config_byte
+00009374 g     F .text	0000001d xdone
+00013160 g     O .bss	00000004 initsp
+00009168 g     F .text	000000ed wait
+0000071b g       .text	00000000 _Xint43
+0000e404 g     O .bss	00000004 mon_clktime
+00008ea4 g     F .text	000000b9 sreset
+000005e7 g       .text	00000000 _Xint15
+000074a1 g     F .text	0000003e lenq
+00009394 g     F .text	00000065 pci_init
+00009ed8 g     F .text	0000004b ttygetc
+00008a58 g     F .text	00000098 signal
+00008260 g     F .text	00000051 read
+00009cf0 g     F .text	000000a7 ttyalloc
+00000119 g       .text	00000000 outsw
+00012d60 g     O .bss	00000058 comtab
+0000af76 g     F .text	00000140 mon_tftp_ack
+000008e6 g       .text	00000000 ctxsw
+000010fc g     F .text	0000007f comsputc
+00013140 g     O .bss	00000004 preempt
+000093f9 g     F .text	0000010e pcibios_init
+00007d28 g     F .text	00000029 _mkinit
+00007af4 g     F .text	0000000a ionull
+0000073c g       .text	00000000 _Xint46
+00000096 g       .text	00000000 inl
+00000557 g       .text	00000000 _Xint0
+00006c9c g     F .text	0000007a getprio
+00005f28 g     F .text	000002b9 create
+000000bd g       .text	00000000 _rtcin
+00008054 g     F .text	00000082 panic
+00000634 g       .text	00000000 _Xint22
+00007f78 g     F .text	00000085 newqueue
+00013cac g     O .bss	00000004 mon_tftp_retx
+000000ef g       .text	00000000 bcopy
+000089dc g     F .text	00000079 setnok
+00002b72 g     F .text	000000d8 mon_newq
+0000057f g       .text	00000000 _Xint5
+00006298 g     F .text	0000008b set_evec
+000131d4 g     O .bss	00000004 mkmutex
+00009bcc g     F .text	00000121 printprocstks
+00013020 g     O .bss	00000110 rxring
+0000064a g       .text	00000000 _Xint24
+00013144 g     O .bss	00000004 ctr1000
+00006fd8 g     F .text	00000131 deq
+00009018 g     F .text	00000129 unsleep
+000073e8 g     F .text	000000b9 freeq
+0000ab48 g       .text	00000000 comint
+00000567 g       .text	00000000 _Xint2
+000006d9 g       .text	00000000 _Xint37
+0000009e g       .text	00000000 outb
+00013378 g     O .bss	00000004 currSP
+000072ee g     F .text	000000fa newq
+0000117b g     F .text	00000057 comwrite
+0000aa7c g       .text	00000000 mon_cksum
+00000ff6 g     F .text	00000106 comflush
+00013cb0 g     O .bss	00000002 mon_tftp_server_port
+00000e50 g     F .text	000001a6 computc
+0000144e g     F .text	0000007a comwstrt
+00000938 g     F .text	0000001d comgetc
+000018ec g     F .text	0000002b mon_arpinit
+0000e060 g       *ABS*	00000000 __bss_start
+00001d38 g     F .text	00000155 mon_arpsend
+00005abc g     F .text	000000c5 main
+00008614 g     F .text	00000090 resume
+00013148 g     O .bss	00000004 slnempty
+00008388 g     F .text	0000008a recvclr
+000030e8 g     F .text	00000142 mon_ethinit
+0000063f g       .text	00000000 _Xint23
+00009b14 g     F .text	000000b7 printtos
+0000ab78 g     F .text	0000017d mon_tftp_in
+0000dcf4 g       .data	00000000 _cyloffset
+00011788 g     O .bss	00000004 nextproc
+00000752 g       .text	00000000 defevec
+000006ad g       .text	00000000 _Xint33
+00000655 g       .text	00000000 _Xint25
+0000813c g     F .text	00000056 putc
+00006323 g     F .text	00000274 trap
+000045e4 g     F .text	00000190 boot_xinu
+0000b848 g     F .text	00000032 strcmp
+0001178c g     O .bss	00000004 maxaddr
+00004a19 g     F .text	0000010e mon_pcibios_init
+00006e28 g     F .text	000001b0 enq
+000076e1 g     F .text	000001b7 pseg
+0000db66 g       .data	00000000 idt
+000004c9 g     F .text	0000003c delay
+00001ecf g     F .text	00000094 mon_bootp_parse
+0000481c g     F .text	00000195 mon_ethcmd
+0000e408 g     O .bss	00000004 mon_timeout
+000117a0 g     O .bss	00000064 vers
+00005a14 g     F .text	0000005a blkcmp
+0000b804 g     F .text	0000002f sprintf
+00013370 g     O .bss	00000004 bpmark
+00000676 g       .text	00000000 _Xint28
+00006b04 g     F .text	0000003f getfirst
+0000e424 g     O .bss	00000004 clktime
+00004b27 g     F .text	0000014f mon_check_pcibios
+00012dc0 g     O .bss	00000030 mon_arptable
+000006fa g       .text	00000000 _Xint40
+000006b8 g       .text	00000000 _Xint34
+00012e00 g     O .bss	00000050 mon_boot_fname
+0000831c g     F .text	0000006a receive
+000005b0 g       .text	00000000 _Xint10
+0000dce6 g       .data	00000000 idtr
+0000ddac g     O .data	00000004 mon_ip_maskall
+00000710 g       .text	00000000 _Xint42
+00002fdc g     F .text	0000010b mon_ethwrite
+0001314c g     O .bss	00000004 clmutex
+0000a654 g     F .text	000000c6 ttynew
+0000dcec g       .data	00000000 cpudelay
+00007518 g     F .text	00000108 setsegs
+00007d51 g     F .text	00000091 mark
+0000dd00 g     O .data	0000004c brtab
+00013150 g     O .bss	00000004 count10
+00013154 g     O .bss	00000004 clkdiff
+000079c4 g     F .text	00000123 insertd
+00004d97 g     F .text	00000041 mon_pci_bios_read_config_byte
+00013374 g     O .bss	00000004 nbpools
+00000896 g       .text	00000000 clkint
+0000ab20 g       .text	00000000 mon_clkint
+00008194 g     F .text	0000006d enqueue
+00006922 g     F .text	00000193 nbgetbuf
+00000873 g       .text	00000000 getirmask
+00000613 g       .text	00000000 _Xint19
+000000a8 g       .text	00000000 outw
+00000b9c g     F .text	00000178 comprobe
+000097fb g     F .text	00000115 scan_pci_bios
+0000e000 g     O .data	00000040 gdt_copy
+00012e54 g     O .bss	00000018 mon_nif
+00009a54 g     F .text	00000039 pci_bios_write_config_dword
+00012ea8 g     O .bss	00000004 mon_boot_state
+00008201 g     F .text	0000005d dequeue
+00005a70 g     F .text	0000004c blkequ
+0000433c g     F .text	000002a6 mon_ethromread
+000000b3 g       .text	00000000 outl
+0000e060 g       *ABS*	00000000 _edata
+0000976e g     F .text	0000008d find_pci_class
+00006e1c g     F .text	0000000a gettime
+00007ca4 g     F .text	00000041 kprintf
+00013cb8 g       *ABS*	00000000 _end
+00009993 g     F .text	00000041 pci_bios_read_config_dword
+00011820 g     O .bss	00000920 tty
+000009dc g     F .text	000001c0 cominit
+00000819 g       .text	00000000 halt
+00005b84 g     F .text	00000195 stacktrace
+00012140 g     O .bss	00000004 rdytail
+000000c8 g       .text	00000000 ___udivsi3
+00000858 g       .text	00000000 restore
+00000955 g     F .text	0000001d comread
+00013158 g     O .bss	00000004 clkruns
+00004774 g     F .text	000000a5 mon_timer
+0000059a g       .text	00000000 _Xint8
+0000056f g       .text	00000000 _Xint3
+0000068c g       .text	00000000 _Xint30
+00004f94 g     F .text	000003e7 mon_3c905_ethinit
+00000681 g       .text	00000000 _Xint29
+0000001d g       .text	00000000 start
+00012144 g     O .bss	00000004 rdyhead
+00000000 g       *ABS*	00000000 __zero
+0000ddc0 g     O .data	00000004 mon_eth_pni
+0000897c g     F .text	0000005d setdev
+000078e4 g     F .text	000000df insert
+0000a624 g     F .text	00000030 ttyinit
+00012148 g     O .bss	00000004 console_dev
+0000061e g       .text	00000000 _Xint20
+00009f24 g     F .text	000001a5 ttyiin
+0000e400 g     O .bss	00000004 mon_boot_try
+00012160 g     O .bss	00000be8 q
+00000103 g       .text	00000000 insw
+00000587 g       .text	00000000 _Xint6
+000027d7 g     F .text	000000f3 mon_udpcksum
+0000b898 g     F .text	0000001e strlen
+000082b4 g     F .text	00000065 ready
+000086e4 g     F .text	0000006e screate
+00008000 g     F .text	00000051 open
+000080d8 g     F .text	00000062 poolinit
+00000660 g       .text	00000000 _Xint26
+0000049e g     F .text	0000002b stop
+000005f2 g       .text	00000000 _Xint16
+00009951 g     F .text	00000042 pci_bios_read_config_word
+00002604 g     F .text	000001d3 mon_udp_in
+00003e1c g     F .text	00000161 mon_ethdemux
+000006c3 g       .text	00000000 _Xint35
+0000585c g     F .text	000001b5 mon_3c905_ethwrite
+00013cb4 g     O .bss	00000004 mon_tftp_memloc
+0000acf5 g     F .text	00000281 mon_tftp_req
+00001cd6 g     F .text	00000062 mon_arpfind
+00012d48 g     O .bss	00000008 memlist
+000005bb g       .text	00000000 _Xint11
+00005e88 g     F .text	0000004b close
+00002c4a g     F .text	0000004c mon_lenq
+000014c8 g     F .text	00000218 monitor
+0000187c g     F .text	0000006d mon_help
+0000055f g       .text	00000000 _Xint1
+00006598 g     F .text	000000e6 freebuf
+
+

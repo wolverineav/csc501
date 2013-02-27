@@ -3,6 +3,7 @@
 #include <conf.h>
 #include <kernel.h>
 #include <q.h>
+#include <proc.h>
 
 /*------------------------------------------------------------------------
  * enqueue  --	insert an item at the tail of a list
@@ -37,4 +38,17 @@ int dequeue(int item)
 	q[mptr->qprev].qnext = mptr->qnext;
 	q[mptr->qnext].qprev = mptr->qprev;
 	return(item);
+}
+
+int printq(int head){
+
+	int proc;
+	proc = q[head].qnext;
+	while(proc < NPROC){
+		kprintf("%s %d->", proctab[proc].pname, \
+				proctab[proc].counter);
+		proc = q[proc].qnext;
+	};
+	kprintf("\n");
+	return 0;
 }
