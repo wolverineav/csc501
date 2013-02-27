@@ -5,12 +5,11 @@
 #include <proc.h>
 #include <q.h>
 #include <stdio.h>
-#include <sched.h>
 
 /*------------------------------------------------------------------------
- * chprio  --  change the scheduling priority of a process
- *------------------------------------------------------------------------
- */
+ *  * chprio  --  change the scheduling priority of a process
+ *   *------------------------------------------------------------------------
+ *    */
 SYSCALL chprio(int pid, int newprio)
 {
 	STATWORD ps;    
@@ -26,6 +25,11 @@ SYSCALL chprio(int pid, int newprio)
 	if(EXPDISTSCHED == scheduler_class){
 		dequeue(pid);
 		insert(pid, rdyhead, pptr->pprio);
+	}
+	/* If legitimate call to chprio is made, and its	*
+	 * priority is > pinh, change pinh			*/
+	if(pptr->pinh < pptr->pprio){
+		chpprio(pid, pptr->pprio);
 	}
 	restore(ps);
 	return(newprio);

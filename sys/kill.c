@@ -7,6 +7,7 @@
 #include <mem.h>
 #include <io.h>
 #include <q.h>
+#include <lock.h>
 #include <stdio.h>
 
 /*------------------------------------------------------------------------
@@ -17,7 +18,7 @@ SYSCALL kill(int pid)
 {
 	STATWORD ps;    
 	struct	pentry	*pptr;		/* points to proc. table for pid*/
-	int	dev;
+	int	dev, next, i;
 
 	disable(ps);
 	if (isbadpid(pid) || (pptr= &proctab[pid])->pstate==PRFREE) {
@@ -50,6 +51,39 @@ SYSCALL kill(int pid)
 	case PRREADY:	dequeue(pid);
 			pptr->pstate = PRFREE;
 			break;
+	case PRLOCK:	/* release all locks held	*/
+		if(pptr->umask != 0){
+               		for(i=0; i<25; i++){	
+				if(ismaskset(pptr->umask,i))
+                                	releaseall(1, i+25);
+                	}
+		}
+		if(pptr->lmask != 0) {
+			for(i=0; i<25; i++){
+				if(ismaskset(pptr->lmask,i))
+					releaseall(1, i);
+			}
+		}
+		/* Remove from any wait queue of Lock	*/
+		if(pptr->plock > -1){
+			next = q[pid].qnext;
+	                if(isbadpid(next)){
+			/* It is the first process in the Lock queue,	*
+			 * pick the previous process's priority		*/
+				next = q[pid].qprev;
+				if(isbadpid(next)){
+				/* No process in Lock queue, set the Lock prio to 0 */
+					locktab[pptr->plock].lprio = 0;
+				} else{
+					chlprio(pptr->plock, proctab[next].pinh);
+				}
+	                } else {
+	                        chpprio(next, 0);
+			}
+		}
+		dequeue(pid);
+		pptr->pstate = PRFREE;
+		break;
 
 	case PRSLEEP:
 	case PRTRECV:	unsleep(pid);

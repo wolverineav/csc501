@@ -18,10 +18,11 @@ int ready(int pid, int resch)
 		return(SYSERR);
 	pptr = &proctab[pid];
 	pptr->pstate = PRREADY;
+	/* insert according to 'pinh' and not pprio	*/
 	if(LINUXSCHED == scheduler_class) {
-		insert(pid,rdyhead,(pptr->pprio + pptr->counter));
+		insert(pid,rdyhead,(pptr->pinh + pptr->counter));
 	} else {
-		insert(pid,rdyhead,pptr->pprio);
+		insert(pid,rdyhead,pptr->pinh);
 	}
 	if (resch)
 		resched();

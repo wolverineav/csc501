@@ -36,10 +36,10 @@ int resched()
 
 	if(optr->pstate == PRREADY){
 	  if(preempt <= 0){
-		insert(currpid,rdyhead,optr->pprio);
+		insert(currpid,rdyhead,optr->pinh);
 		optr->counter = 0;
 	  } else {
-		insert(currpid,rdyhead,	(optr->pprio + preempt));
+		insert(currpid,rdyhead,	(optr->pinh + preempt));
 		optr->counter = preempt;
 	  }
 	}
@@ -60,8 +60,8 @@ int resched()
 
 		if ( ( (optr= &proctab[currpid])->pstate == PRCURR) && \
 			( (next_proc == NULLPROC) || \
-			( (q[next_proc].qkey > optr->pprio) && \
-			  (optr->pprio > rand_prio) ) ) ) {
+			( (q[next_proc].qkey > optr->pinh) && \
+			  (optr->pinh > rand_prio) ) ) ) {
 			#ifdef  RTCLOCK
 		        	preempt = QUANTUM;
 			#endif
@@ -69,7 +69,7 @@ int resched()
 		}
 	} else {
 		if ( ( (optr= &proctab[currpid])->pstate == PRCURR) && \
-				(lastkey(rdytail)<optr->pprio)) {
+				(lastkey(rdytail)<optr->pinh)) {
 			return(OK);
 		}
 	}
@@ -78,7 +78,9 @@ int resched()
 
 	if (optr->pstate == PRCURR) {
 		optr->pstate = PRREADY;
-		insert(currpid,rdyhead,optr->pprio);
+//		insert(currpid,rdyhead,optr->pprio);
+		/* insert accroding to 'pinh' and not pprio	*/
+		insert(currpid,rdyhead,optr->pinh);
 	}
 
 	/* remove highest priority process at end of ready list */

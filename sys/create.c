@@ -67,6 +67,15 @@ SYSCALL create(procaddr,ssize,priority,name,nargs,args)
 	pptr->pirmask[0] = 0;
 	pptr->pnxtkin = BADPID;
 	pptr->pdevs[0] = pptr->pdevs[1] = pptr->ppagedev = BADDEV;
+	/* LOCK variables	*/
+	pptr->lockret = OK;
+	pptr->pinh = priority;	/* default inherited priority is same as process priority */
+	pptr->plock = -1;
+	pptr->lockcount = 0;
+	pptr->lmask = 0;
+	pptr->umask = 0;
+	pptr->lhmask = 0;
+	pptr->uhmask = 0;
 
 		/* Bottom of stack */
 	*saddr = MAGIC;

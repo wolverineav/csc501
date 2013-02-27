@@ -27,6 +27,7 @@
 #define	PRSUSP		'\006'		/* process is suspended		*/
 #define	PRWAIT		'\007'		/* process is on semaphore queue*/
 #define	PRTRECV		'\010'		/* process is timing a receive	*/
+#define PRLOCK		'\011'		/* process is on lock queue	*/
 
 /* miscellaneous process definitions */
 
@@ -60,7 +61,17 @@ struct	pentry	{
 	int	fildes[_NFILE];		/* file - device translation	*/
 	int	ppagedev;		/* pageing dgram device		*/
 	int	pwaitret;
+	/* Scheduling */
 	int 	counter;		/* counter for Linux sched  	*/
+	/* LOCK variables */
+	int	lockret;		/* OK or DELETED status		*/
+	int	pinh;			/* inherited priority of proc	*/
+	int	plock;			/* waiting on lock		*/
+	int	lockcount;
+	int	lmask;			/* lower 25 bit mask		*/
+	int	umask;			/* upper 25 bit mask		*/
+	int	lhmask;			/* lower history mask		*/
+	int	uhmask;			/* upper history mask		*/
 };
 
 

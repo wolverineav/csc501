@@ -4,6 +4,8 @@
 #include <kernel.h>
 #include <q.h>
 #include <proc.h>
+#include <lock.h>
+#include <stdio.h>
 
 /*------------------------------------------------------------------------
  * enqueue  --	insert an item at the tail of a list
@@ -37,18 +39,19 @@ int dequeue(int item)
 	mptr = &q[item];
 	q[mptr->qprev].qnext = mptr->qnext;
 	q[mptr->qnext].qprev = mptr->qprev;
+	mptr->locktype = NOP;
 	return(item);
 }
 
-int printq(int head){
-
-	int proc;
-	proc = q[head].qnext;
-	while(proc < NPROC){
-		kprintf("%s %d->", proctab[proc].pname, \
-				proctab[proc].counter);
-		proc = q[proc].qnext;
-	};
+int printq(int head)
+{
+	int curr;
+	curr = q[head].qnext;
+	kprintf("qnext:%d\n",curr);
+	while(curr < NPROC){
+		kprintf("R/W:%d, pname:%s->", q[curr].locktype, proctab[curr].pname);
+		curr = q[curr].qnext;
+		kprintf("nextis:%d\t", curr);
+	}
 	kprintf("\n");
-	return 0;
 }

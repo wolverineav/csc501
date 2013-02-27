@@ -16,7 +16,7 @@ void reader (char *msg, int lck, int lprio)
 	} else {
 	        lock (lck, READ, lprio);
 	}
-        kprintf ("%s: acquired lock,goto sleep 2s and then print %s 5 times.\n", msg, msg);
+        kprintf ("%s: acquired lock,goto sleep 2s and then print %s 5 times.\n", msg);
 	sleep(2);
 	ret = 5000000;
 	i = 1;
@@ -84,9 +84,9 @@ void test ()
 	        lck  = lcreate();
 	}
 
-	rd1 = create(reader, 2000, 5, "reader", 3, "reader", lck, 30);
-	ip1 = create(infinite_loop, 2000, 10, "infinite_loop", 1, "infinite_loop");
-        wr1 = create(writer, 2000, 15, "writer", 3, "writer", lck, 20);
+	rd1 = create(reader, 2000, 20, "reader", 3, "reader", lck, 30);
+	ip1 = create(infinite_loop, 2000, 40, "infinite_loop", 1, "infinite_loop");
+        wr1 = create(writer, 2000, 60, "writer", 3, "writer", lck, 20);
 	
         kprintf("MAIN - Start reader..\n");
         resume(rd1);
@@ -99,11 +99,7 @@ void test ()
         kprintf("MAIN - Start infinite loop process and goto sleep\n");
         resume (ip1);
 
-        sleep (10);
-	kill(rd1);
-	kill(wr1);
-	kill(ip1);
-	kprintf("MAIN - killed all processes..\n");
+        sleep (20);
 }
 
 int main( )
